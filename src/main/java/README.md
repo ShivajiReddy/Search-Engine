@@ -1,0 +1,23 @@
+# Search-Engine
+Goal is to implement a search engine from scratch.
+
+Tech stack: Java, JSOUP, Lucene, Hadoop, Server+UI 
+
+README
+1. To run the crawler run the crawler script file ./crawler.sh located in src/crwler directory
+
+
+$:./crawler.sh <wikipedia-url> <output-directory-path> <depth - number of documents to crawl> <number of threads>
+Arguments:
+<wikipedia-url> - eg: https://en.wikipedia.org/wiki/Friends
+
+ 
+2. To run the Lucene Indexer run the indexer script file ./indexer.sh located in src/indexer directory
+    $:./indexer.sh <input-directory> <outputdirectory> <query string>
+
+Arguments:
+
+$input directory - location where crawler stored documents
+$output directory - location where Indexer should store indexed files of FSDirectory()
+$query string - query string
+

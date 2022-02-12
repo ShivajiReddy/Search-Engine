@@ -1,3 +1,5 @@
+package src.crawler;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,7 +15,7 @@ public class Crawler {
     Queue<String> links;
     // visited link
     HashMap<String , Integer> visitedLinks;
-
+    WriteToFile w;
     public Crawler(String URL) {
         this.URL = URL;
         links = new LinkedList<>();
@@ -28,7 +30,7 @@ public class Crawler {
         int i = 0;   // counter remove it after checking
 
         try {
-            while(!links.isEmpty() &&  i<100) {
+            while(!links.isEmpty() &&  i<6000) {
                 System.out.println("parsing the page now");
                 // https://stackoverflow.com/questions/24475816/jsoup-404-error - handling error
                 // ignore http errors and allow only those with 200 status code
@@ -64,14 +66,14 @@ public class Crawler {
                    // Elements textData = doc.getElementsByTag("");
                     //Elements textData = doc.select(".mw-content-ltr p, .mw-content-ltr li");   // for wikipedia
                    // Elements textData = doc.select("content");
-
+                    // https://stackoverflow.com/questions/23910841/how-to-extract-text-from-wikipedia-using-jsoup
                     Elements textData = doc.getElementsByClass("webpage-content");
                     String title = doc.title();
 
                     // Element textData = doc.getElementById("webpage-content");
                     //  System.out.println("textData :"  + textData);
                     // object to write data to files
-                    WriteToFile w = new WriteToFile();
+                    //WriteToFile w = new WriteToFile();
                     w.fileWrite(String.valueOf(textData), i);
 
                 }else{
